@@ -64,6 +64,7 @@ final class DisableEmojis extends AbstractFeature {
 			return $urls;
 		}
 
+		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Using WordPress core filter.
 		$emoji_svg_url = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/' );
 
 		return array_filter(
