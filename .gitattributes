@@ -1,0 +1,67 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Exclude files from GitHub ZIP downloads (export-ignore)
+# These files will not be included when downloading via GitHub's "Download ZIP" button
+
+# Development and build files
+.git export-ignore
+.github export-ignore
+node_modules export-ignore
+vendor export-ignore
+
+# Test files
+tests export-ignore
+phpunit.xml export-ignore
+phpunit.xml.dist export-ignore
+.phpunit.result.cache export-ignore
+
+# Coding standards
+phpcs.xml export-ignore
+phpcs.xml.dist export-ignore
+phpstan.neon export-ignore
+phpstan.neon.dist export-ignore
+
+# Composer files
+composer.lock export-ignore
+
+# Documentation
+docs export-ignore
+SETUP-STANDARDS.md export-ignore
+PLUGIN-CHECK-NOTES.md export-ignore
+CODING-STANDARDS.md export-ignore
+CONTRIBUTING.md export-ignore
+INSTALLATION.md export-ignore
+SUMMARY.md export-ignore
+
+# Version control
+.gitignore export-ignore
+.gitattributes export-ignore
+
+# CI/CD
+.travis.yml export-ignore
+.gitlab-ci.yml export-ignore
+Jenkinsfile export-ignore
+
+# IDE files
+.idea export-ignore
+.vscode export-ignore
+.DS_Store export-ignore
+*.sublime-project export-ignore
+*.sublime-workspace export-ignore
+
+# Build/deploy files
+.distignore export-ignore
+.deployignore export-ignore
+Gruntfile.js export-ignore
+Gulpfile.js export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+webpack.config.js export-ignore
+
+# Misc
+*.log export-ignore
+*.zip export-ignore
+*.tar.gz export-ignore
+tmp export-ignore
+temp export-ignore
