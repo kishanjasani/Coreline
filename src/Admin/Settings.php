@@ -432,12 +432,6 @@ final class Settings {
 		<div class="wrap" id="coreline-settings">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 
-			<div class="coreline-header">
-				<p class="coreline-tagline">
-					<?php esc_html_e( 'Essential hardening and cleanup for every WordPress site.', 'coreline' ); ?>
-				</p>
-			</div>
-
 			<form method="post" action="options.php">
 				<?php
 				settings_fields( self::PAGE_SLUG );
