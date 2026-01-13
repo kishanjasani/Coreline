@@ -32,9 +32,6 @@
     <!-- Check up to 20 files simultaneously -->
     <arg name="parallel" value="20"/>
 
-    <!-- Show sniff codes in all reports -->
-    <arg value="ns"/>
-
     <!-- Use colors in output -->
     <arg name="colors"/>
 
@@ -46,39 +43,15 @@
         <!-- We use PSR-4 autoloading -->
         <exclude name="WordPress.Files.FileName"/>
 
-        <!-- Allow multiple classes in one file for related classes -->
-        <exclude name="Generic.Files.OneObjectStructurePerFile"/>
-
         <!-- Allow camelCase for method, property, and variable names (PSR standard) -->
         <exclude name="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid"/>
         <exclude name="WordPress.NamingConventions.ValidVariableName.PropertyNotSnakeCase"/>
         <exclude name="WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase"/>
         <exclude name="WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase"/>
-
-        <!-- Allow inline comments without punctuation -->
-        <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
-
-        <!-- Allow regular condition checks (not Yoda conditions) for readability -->
-        <exclude name="WordPress.PHP.YodaConditions.NotYoda"/>
-    </rule>
-
-    <!-- Include WordPress-Docs standard -->
-    <rule ref="WordPress-Docs">
-        <!-- Allow @since tags without version for internal use -->
-        <exclude name="Squiz.Commenting.FunctionComment.MissingParamTag"/>
     </rule>
 
     <!-- Include WordPress VIP Go standards -->
     <rule ref="WordPress-VIP-Go">
-        <!-- Allow direct database queries with $wpdb (we use prepare()) -->
-        <exclude name="WordPress.DB.DirectDatabaseQuery"/>
-
-        <!-- Allow filesystem functions (needed for plugin activation) -->
-        <exclude name="WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents"/>
-
-        <!-- Allow flush_rewrite_rules in activation/deactivation hooks -->
-        <exclude name="WordPressVIPMinimum.Functions.RestrictedFunctions.flush_rewrite_rules_flush_rewrite_rules"/>
-
         <!-- Allow $_SERVER variable use (we validate with filter_var) -->
         <exclude name="WordPressVIPMinimum.Variables.ServerVariables.UserControlledHeaders"/>
     </rule>
@@ -109,32 +82,6 @@
 
     <!-- Enforce strict types -->
     <rule ref="Generic.PHP.RequireStrictTypes"/>
-
-    <!-- Ensure proper nonce verification -->
-    <rule ref="WordPress.Security.NonceVerification"/>
-
-    <!-- Ensure output is escaped -->
-    <rule ref="WordPress.Security.EscapeOutput"/>
-
-    <!-- Check for SQL injection vulnerabilities -->
-    <rule ref="WordPress.DB.PreparedSQL"/>
-
-    <!-- Validate sanitization -->
-    <rule ref="WordPress.Security.ValidatedSanitizedInput"/>
-
-    <!-- Allow longer line length for readability -->
-    <rule ref="Generic.Files.LineLength">
-        <properties>
-            <property name="lineLimit" value="120"/>
-            <property name="absoluteLineLimit" value="150"/>
-        </properties>
-    </rule>
-
-    <!-- WordPress hook documentation -->
-    <!-- <rule ref="WordPress.WP.GlobalVariablesOverride"/> -->
-
-    <!-- Disallow extract() for security -->
-    <rule ref="WordPress.PHP.DontExtract"/>
 
     <!-- Discourage goto -->
     <rule ref="Generic.PHP.DiscourageGoto"/>

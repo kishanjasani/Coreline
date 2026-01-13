@@ -40,13 +40,13 @@ final class Settings {
 	 * @var array
 	 */
 	private const DEFAULTS = array(
-		'disable_emojis' => true,
-		'hide_wp_version' => true,
-		'hide_php_version' => true,
+		'disable_emojis'           => true,
+		'hide_wp_version'          => true,
+		'hide_php_version'         => true,
 		'custom_login_url_enabled' => true,
-		'custom_login_slug' => 'secure-login',
-		'hotlink_protection' => true,
-		'disable_pingbacks' => true,
+		'custom_login_slug'        => 'secure-login',
+		'hotlink_protection'       => true,
+		'disable_pingbacks'        => true,
 	);
 
 	/**
@@ -93,13 +93,13 @@ final class Settings {
 			self::PAGE_SLUG,
 			self::OPTION_NAME,
 			array(
-				'type' => 'array',
+				'type'              => 'array',
 				'sanitize_callback' => array( $this, 'sanitizeSettings' ),
-				'default' => self::DEFAULTS,
+				'default'           => self::DEFAULTS,
 			)
 		);
 
-		// General Settings Section
+		// General Settings Section.
 		add_settings_section(
 			'coreline_general',
 			__( 'Security & Performance Features', 'coreline' ),
@@ -107,7 +107,7 @@ final class Settings {
 			self::PAGE_SLUG
 		);
 
-		// Disable Emojis
+		// Disable Emojis.
 		add_settings_field(
 			'disable_emojis',
 			__( 'Disable Emojis', 'coreline' ),
@@ -115,12 +115,12 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_general',
 			array(
-				'name' => 'disable_emojis',
+				'name'  => 'disable_emojis',
 				'label' => __( 'Remove WordPress emoji scripts to improve performance', 'coreline' ),
 			)
 		);
 
-		// Hide WordPress Version
+		// Hide WordPress Version.
 		add_settings_field(
 			'hide_wp_version',
 			__( 'Hide WordPress Version', 'coreline' ),
@@ -128,12 +128,12 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_general',
 			array(
-				'name' => 'hide_wp_version',
+				'name'  => 'hide_wp_version',
 				'label' => __( 'Remove WordPress version from HTML and RSS feeds', 'coreline' ),
 			)
 		);
 
-		// Hide PHP Version
+		// Hide PHP Version.
 		add_settings_field(
 			'hide_php_version',
 			__( 'Hide PHP Version', 'coreline' ),
@@ -141,12 +141,12 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_general',
 			array(
-				'name' => 'hide_php_version',
+				'name'  => 'hide_php_version',
 				'label' => __( 'Remove PHP version from HTTP headers', 'coreline' ),
 			)
 		);
 
-		// Custom Login URL Section
+		// Custom Login URL Section.
 		add_settings_section(
 			'coreline_login',
 			__( 'Custom Login URL', 'coreline' ),
@@ -154,7 +154,7 @@ final class Settings {
 			self::PAGE_SLUG
 		);
 
-		// Enable Custom Login URL
+		// Enable Custom Login URL.
 		add_settings_field(
 			'custom_login_url_enabled',
 			__( 'Enable Custom Login URL', 'coreline' ),
@@ -162,12 +162,12 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_login',
 			array(
-				'name' => 'custom_login_url_enabled',
+				'name'  => 'custom_login_url_enabled',
 				'label' => __( 'Change wp-login.php to a custom URL', 'coreline' ),
 			)
 		);
 
-		// Custom Login Slug
+		// Custom Login Slug.
 		add_settings_field(
 			'custom_login_slug',
 			__( 'Login Slug', 'coreline' ),
@@ -175,17 +175,17 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_login',
 			array(
-				'name' => 'custom_login_slug',
+				'name'        => 'custom_login_slug',
 				'placeholder' => 'secure-login',
 				'description' => sprintf(
 					/* translators: %s: Custom login URL */
 					__( 'Your login URL: %s', 'coreline' ),
-					'<code id="coreline-login-url">' . home_url( 'secure-login' ) . '</code>'
+					'<code id="coreline-login-url">' . esc_url( home_url( 'secure-login' ) ) . '</code>'
 				),
 			)
 		);
 
-		// Protection Features Section
+		// Protection Features Section.
 		add_settings_section(
 			'coreline_protection',
 			__( 'Protection Features', 'coreline' ),
@@ -193,7 +193,7 @@ final class Settings {
 			self::PAGE_SLUG
 		);
 
-		// Hotlink Protection
+		// Hotlink Protection.
 		add_settings_field(
 			'hotlink_protection',
 			__( 'Hotlink Protection', 'coreline' ),
@@ -201,12 +201,12 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_protection',
 			array(
-				'name' => 'hotlink_protection',
+				'name'  => 'hotlink_protection',
 				'label' => __( 'Prevent other sites from hotlinking your images', 'coreline' ),
 			)
 		);
 
-		// Disable Pingbacks
+		// Disable Pingbacks.
 		add_settings_field(
 			'disable_pingbacks',
 			__( 'Disable Pingbacks', 'coreline' ),
@@ -214,7 +214,7 @@ final class Settings {
 			self::PAGE_SLUG,
 			'coreline_protection',
 			array(
-				'name' => 'disable_pingbacks',
+				'name'  => 'disable_pingbacks',
 				'label' => __( 'Disable XML-RPC pingbacks and trackbacks', 'coreline' ),
 			)
 		);
@@ -229,7 +229,7 @@ final class Settings {
 	public function sanitizeSettings( array $input ): array {
 		$sanitized = array();
 
-		// Checkboxes
+		// Checkboxes.
 		$checkboxes = array(
 			'disable_emojis',
 			'hide_wp_version',
@@ -243,11 +243,11 @@ final class Settings {
 			$sanitized[ $checkbox ] = ! empty( $input[ $checkbox ] );
 		}
 
-		// Custom login slug
+		// Custom login slug.
 		if ( isset( $input['custom_login_slug'] ) ) {
 			$slug = sanitize_title_with_dashes( $input['custom_login_slug'] );
 
-			// Validate slug
+			// Validate slug.
 			if ( empty( $slug ) || $this->isReservedSlug( $slug ) ) {
 				add_settings_error(
 					self::OPTION_NAME,
@@ -292,11 +292,11 @@ final class Settings {
 	 * @return void
 	 */
 	public function enqueueAssets( string $hook ): void {
-		if ( $hook !== 'settings_page_' . self::PAGE_SLUG ) {
+		if ( 'settings_page_' . self::PAGE_SLUG !== $hook ) {
 			return;
 		}
 
-		// Enqueue admin CSS
+		// Enqueue admin CSS.
 		wp_enqueue_style(
 			'coreline-admin',
 			CORELINE_PLUGIN_URL . 'assets/css/admin.css',
@@ -304,7 +304,7 @@ final class Settings {
 			CORELINE_VERSION
 		);
 
-		// Enqueue admin JS
+		// Enqueue admin JS.
 		wp_enqueue_script(
 			'coreline-admin',
 			CORELINE_PLUGIN_URL . 'assets/js/admin.js',
@@ -313,12 +313,12 @@ final class Settings {
 			true
 		);
 
-		// Pass data to JS
+		// Pass data to JS.
 		wp_localize_script(
 			'coreline-admin',
 			'corelineAdmin',
 			array(
-				'homeUrl' => home_url( '/' ),
+				'homeUrl'     => home_url( '/' ),
 				'defaultSlug' => self::DEFAULTS['custom_login_slug'],
 			)
 		);
@@ -332,11 +332,11 @@ final class Settings {
 	public function displayNotices(): void {
 		$screen = get_current_screen();
 
-		if ( $screen === null || $screen->id !== 'settings_page_' . self::PAGE_SLUG ) {
+		if ( null === $screen || 'settings_page_' . self::PAGE_SLUG !== $screen->id ) {
 			return;
 		}
 
-		// Show warning about custom login URL
+		// Show warning about custom login URL.
 		$settings = $this->getSettings();
 
 		if ( $settings['custom_login_url_enabled'] ) {
@@ -393,8 +393,8 @@ final class Settings {
 	 */
 	public function renderCheckboxField( array $args ): void {
 		$settings = $this->getSettings();
-		$name = $args['name'];
-		$checked = ! empty( $settings[ $name ] );
+		$name     = $args['name'];
+		$checked  = ! empty( $settings[ $name ] );
 		?>
 		<label>
 			<input
@@ -415,9 +415,9 @@ final class Settings {
 	 * @return void
 	 */
 	public function renderTextField( array $args ): void {
-		$settings = $this->getSettings();
-		$name = $args['name'];
-		$value = $settings[ $name ] ?? '';
+		$settings    = $this->getSettings();
+		$name        = $args['name'];
+		$value       = $settings[ $name ] ?? '';
 		$placeholder = $args['placeholder'] ?? '';
 		?>
 		<input
@@ -484,7 +484,7 @@ final class Settings {
 	public function getSettings(): array {
 		$settings = get_option( self::OPTION_NAME, self::DEFAULTS );
 
-		// Ensure all defaults are present
+		// Ensure all defaults are present.
 		return wp_parse_args( $settings, self::DEFAULTS );
 	}
 
@@ -492,16 +492,16 @@ final class Settings {
 	 * Get a specific setting value.
 	 *
 	 * @param string $key     Setting key.
-	 * @param mixed  $default Default value.
+	 * @param mixed  $value Default value.
 	 * @return mixed
 	 */
-	public static function get( string $key, $default = null ) {
+	public static function get( string $key, $value = null ) {
 		$settings = get_option( self::OPTION_NAME, self::DEFAULTS );
 
 		if ( isset( $settings[ $key ] ) ) {
 			return $settings[ $key ];
 		}
 
-		return $default ?? self::DEFAULTS[ $key ] ?? null;
+		return $value ?? self::DEFAULTS[ $key ] ?? null;
 	}
 }

@@ -27,8 +27,8 @@ final class DisablePingbacks extends AbstractFeature {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->name = 'Disable Pingbacks';
-		$this->description = 'Disable XML-RPC pingbacks and trackbacks for security';
+		$this->name        = __( 'Disable Pingbacks', 'coreline' );
+		$this->description = __( 'Disable XML-RPC pingbacks and trackbacks for security', 'coreline' );
 		$this->settingsKey = 'disable_pingbacks';
 
 		parent::__construct();

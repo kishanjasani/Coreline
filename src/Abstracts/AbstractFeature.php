@@ -111,13 +111,13 @@ abstract class AbstractFeature implements FeatureInterface {
 	 * @return bool
 	 */
 	protected function shouldEnable(): bool {
-		// If settings key is defined, check settings
-		if ( $this->settingsKey !== null ) {
+		// If settings key is defined, check settings.
+		if ( null !== $this->settingsKey ) {
 			$settingValue = Settings::get( $this->settingsKey, true );
 			return (bool) $settingValue;
 		}
 
-		// Fallback to default enabled
+		// Fallback to default enabled.
 		return true;
 	}
 

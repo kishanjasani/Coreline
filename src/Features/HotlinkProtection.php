@@ -28,8 +28,8 @@ final class HotlinkProtection extends AbstractFeature {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->name = 'Hotlink Protection';
-		$this->description = 'Prevent other sites from hotlinking your images';
+		$this->name        = __( 'Hotlink Protection', 'coreline' );
+		$this->description = __( 'Prevent other sites from hotlinking your images', 'coreline' );
 		$this->settingsKey = 'hotlink_protection';
 
 		parent::__construct();
@@ -50,7 +50,7 @@ final class HotlinkProtection extends AbstractFeature {
 	 * @return void
 	 */
 	public function protectImages(): void {
-		// Only check for image requests
+		// Only check for image requests.
 		if ( ! $this->isImageRequest() ) {
 			return;
 		}
@@ -59,22 +59,22 @@ final class HotlinkProtection extends AbstractFeature {
 		$referer = isset( $_SERVER['HTTP_REFERER'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
 		$referer = esc_url_raw( $referer );
 
-		// Allow empty referer (direct access)
+		// Allow empty referer (direct access).
 		if ( empty( $referer ) ) {
 			return;
 		}
 
-		// Allow same domain
+		// Allow same domain.
 		if ( $this->isSameDomain( $referer ) ) {
 			return;
 		}
 
-		// Allow search engines
+		// Allow search engines.
 		if ( $this->isSearchEngine( $referer ) ) {
 			return;
 		}
 
-		// Block hotlinking
+		// Block hotlinking.
 		status_header( 403 );
 		exit;
 	}

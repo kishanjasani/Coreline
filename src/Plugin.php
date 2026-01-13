@@ -57,7 +57,7 @@ final class Plugin {
 	 * @return void
 	 */
 	public function run(): void {
-		// Initialize features
+		// Initialize features.
 		foreach ( $this->features as $feature ) {
 			$feature->init();
 		}
@@ -78,7 +78,7 @@ final class Plugin {
 			new DisablePingbacks(),
 		);
 
-		// Allow developers to add or remove features
+		// Allow developers to add or remove features.
 		return apply_filters( 'coreline_features', $features );
 	}
 

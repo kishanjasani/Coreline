@@ -27,8 +27,8 @@ final class HidePHPVersion extends AbstractFeature {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->name        = 'Hide PHP Version';
-		$this->description = 'Remove PHP version from HTTP headers for security';
+		$this->name        = __( 'Hide PHP Version', 'coreline' );
+		$this->description = __( 'Remove PHP version from HTTP headers for security', 'coreline' );
 		$this->settingsKey = 'hide_php_version';
 
 		parent::__construct();
@@ -41,7 +41,6 @@ final class HidePHPVersion extends AbstractFeature {
 	 */
 	protected function registerHooks(): void {
 		add_action( 'send_headers', array( $this, 'removePhpVersionHeader' ) );
-		add_filter( 'wp_headers', array( $this, 'removePhpVersionFromHeaders' ) );
 	}
 
 	/**
@@ -50,17 +49,8 @@ final class HidePHPVersion extends AbstractFeature {
 	 * @return void
 	 */
 	public function removePhpVersionHeader(): void {
-		header_remove( 'X-Powered-By' );
-	}
-
-	/**
-	 * Remove PHP version from WordPress headers.
-	 *
-	 * @param array $headers The array of headers.
-	 * @return array
-	 */
-	public function removePhpVersionFromHeaders( array $headers ): array {
-		unset( $headers['X-Powered-By'] );
-		return $headers;
+		if ( ! headers_sent() ) {
+			header_remove( 'X-Powered-By' );
+		}
 	}
 }

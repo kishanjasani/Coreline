@@ -10,6 +10,7 @@ Coreline is a lightweight WordPress security and optimization plugin that provid
 
 - **Emoji Script Removal**: Removes WordPress emoji detection scripts to improve performance
 - **WordPress Version Hiding**: Removes WordPress version numbers from HTML and RSS feeds for better security
+- **PHP Version Hiding**: Removes PHP version information from HTTP headers to prevent version detection
 - **Custom Login URL**: Changes wp-login.php to a custom URL (e.g., `/secure-login/`) to prevent automated brute-force attacks.
 - **Hotlink Protection**: Prevents other websites from hotlinking your images (works on both Apache and Nginx)
 - **Disable Pingbacks & Trackbacks**: Disables XML-RPC pingbacks and trackbacks for improved security
@@ -84,6 +85,7 @@ coreline/
 │   │   ├── DisableEmojis.php
 │   │   ├── DisablePingbacks.php
 │   │   ├── HideWordPressVersion.php
+│   │   ├── HidePHPVersion.php
 │   │   ├── HotlinkProtection.php
 │   │   └── ProtectWpLogin.php
 │   └── Plugin.php
@@ -113,6 +115,12 @@ add_filter('coreline_features', function($features) {
 - Allows search engines (Google, Bing, Yahoo, DuckDuckGo)
 - Works on both Apache and Nginx servers
 - PHP-based implementation (no .htaccess required)
+
+### Hide PHP Version
+- Removes `X-Powered-By` HTTP header that exposes PHP version
+- Prevents version detection by tools like Wappalyzer
+- Enhances security through obscurity
+- Works by removing headers before they're sent to the browser
 
 ### Disable Pingbacks
 - Completely disables XML-RPC pingback functionality

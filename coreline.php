@@ -25,13 +25,13 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Define plugin constants
+// Define plugin constants.
 define( 'CORELINE_VERSION', '1.0.0' );
 define( 'CORELINE_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'CORELINE_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'CORELINE_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
-// Require Composer autoloader
+// Require Composer autoloader.
 if ( file_exists( CORELINE_PLUGIN_DIR . 'vendor/autoload.php' ) ) {
 	require_once CORELINE_PLUGIN_DIR . 'vendor/autoload.php';
 }
@@ -46,5 +46,5 @@ function coreline_init(): void {
 	$plugin->run();
 }
 
-// Initialize plugin
+// Initialize plugin.
 add_action( 'plugins_loaded', __NAMESPACE__ . '\\coreline_init' );
