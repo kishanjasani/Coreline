@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Coreline\Contracts;
 
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**
  * Interface FeatureInterface
  *

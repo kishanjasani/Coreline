@@ -9,6 +9,10 @@ declare(strict_types=1);
 
 namespace Coreline\Abstracts;
 
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 use Coreline\Contracts\FeatureInterface;
 use Coreline\Admin\Settings;
 

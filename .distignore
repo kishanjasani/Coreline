@@ -24,6 +24,9 @@ docs
 SETUP-STANDARDS.md
 PLUGIN-CHECK-NOTES.md
 CODING-STANDARDS.md
+SUMMARY.md
+INSTALLATION.md
+CONTRIBUTING.md
 
 # Version control
 .gitignore
