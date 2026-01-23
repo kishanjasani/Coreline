@@ -73,6 +73,11 @@ Absolutely! Coreline follows WordPress VIP Go coding standards and is production
 
 == Changelog ==
 
+= 0.1.3 =
+* Add WordPress Playground blueprint support
+* Add WordPress.org assets (banners and icons)
+* Improve build process to exclude .wordpress-org folder from distribution
+
 = 0.1.2 =
 * Fix deployment workflow and vendor folder inclusion
 * Update GitHub Actions for proper releases
