@@ -1,6 +1,7 @@
 # Development and build files
 .git
 .github
+.wordpress-org
 node_modules
 
 # Test files

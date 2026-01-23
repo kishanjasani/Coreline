@@ -5,9 +5,10 @@
 # These files will not be included when downloading via GitHub's "Download ZIP" button
 
 # Development and build files
-.git export-ignore
-.github export-ignore
+/.git export-ignore
+/.github export-ignore
 node_modules export-ignore
+/.wordpress-org export-ignore
 
 # Test files
 tests export-ignore
