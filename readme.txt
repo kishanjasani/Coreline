@@ -4,7 +4,7 @@ Tags: security, hardening, performance, login, optimization
 Requires at least: 5.0
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.1.3
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,13 +70,21 @@ Absolutely! Coreline follows WordPress VIP Go coding standards and is production
 
 == Screenshots ==
 
+1. Main settings page
+2. Custom login page with updated slug and logo
+
 
 == Changelog ==
 
+= 1.0.0 =
+* Fix: Update landing page url in blueprint.json
+* Fix: Improve build process to exclude .wordpress-org folder from distribution
+* Fix: Update translations
+
 = 0.1.3 =
-* Add WordPress Playground blueprint support
-* Add WordPress.org assets (banners and icons)
-* Improve build process to exclude .wordpress-org folder from distribution
+* New: Add WordPress Playground blueprint support
+* New: Add WordPress.org assets (banners and icons)
+* Fix: Improve build process to exclude .wordpress-org folder from distribution
 
 = 0.1.2 =
 * Fix deployment workflow and vendor folder inclusion
@@ -95,10 +103,8 @@ Absolutely! Coreline follows WordPress VIP Go coding standards and is production
 
 == Support ==
 
-For bug reports and feature requests, please visit:
-https://github.com/kishanjasani/coreline/issues
+For bug reports and feature requests, please visit [GitHub Issues](https://github.com/kishanjasani/coreline/issues)
 
 == License ==
 
-This plugin is licensed under the GPLv2 or later.
-https://www.gnu.org/licenses/gpl-2.0.html
+This plugin is licensed under the [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html).
