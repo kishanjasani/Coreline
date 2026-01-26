@@ -1,5 +1,5 @@
 {
-    "landingPage": "/secure-login",
+    "landingPage": "/wp-admin/admin.php?page=coreline-settings",
     "features": {
         "networking": true
     },
